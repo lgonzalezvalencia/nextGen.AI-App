@@ -1,0 +1,19 @@
+@use "./../../variables" as *;
+
+
+html {
+    background-color: black;
+}
+
+#burger-menu {
+    position: absolute;
+    top: 70px;
+    left: 30px;
+    background-color: $Gray-1;
+    border: 1px solid white;
+    z-index: 1;
+}
+
+#menu-icon {
+    color: white;
+}
