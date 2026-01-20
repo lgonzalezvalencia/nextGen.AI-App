@@ -1,12 +1,13 @@
-import MenuIcon from "@mui/icons-material/Menu";
 import styles from "./TeamMemberInsights.module.scss";
+import BurgerMenu from "../../components/burgerMenu/BurgerMenu";
+import RecordingButton from "../Conversation/components/recordingButton/RecordingButton";
 
 const TeamMemberInsights = () => {
   return (
     <div className={styles.teamMemberInsightsContainer}>
       <div className={styles.teamMemberInsightsContent}>
         <div className={styles.teamMemberInsightsHeader}>
-          <MenuIcon style={{ color: "white" }} />
+          <BurgerMenu />
         </div>
         <article className={styles.card}>
           <header className={styles.header}>
@@ -180,7 +181,7 @@ const TeamMemberInsights = () => {
         </article>
       </div>
       <div className={styles.teamMemberInsightsFooter}>
-        <MenuIcon style={{ color: "white" }} />
+        <RecordingButton />
       </div>
     </div>
   );
