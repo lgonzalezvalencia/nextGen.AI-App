@@ -1,10 +1,7 @@
-const recordButton = () => {
-  return (
-    <div>
-      <h1>Welcome to NextGen AI</h1>
-      <p>Your gateway to the future of artificial intelligence.</p>
-    </div>
-  );
+import styles from "./RecordButton.module.scss";
+
+const RecordButton = () => {
+  return <button className={styles.recordButton}>Record</button>;
 };
 
-export default recordButton;
+export default RecordButton;
