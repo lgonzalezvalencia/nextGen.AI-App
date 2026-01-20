@@ -1,1 +1,65 @@
-{}
+{
+  "conversation": [
+    {
+      "speaker": "Juan Ignacio",
+      "role": "Manager",
+      "message": "Hey, thanks for taking the time today. How are you feeling overall this week?"
+    },
+    {
+      "speaker": "Employee",
+      "role": "Employee",
+      "message": "Honestly… a bit overwhelmed. There's been a lot happening at once."
+    },
+    {
+      "speaker": "Juan Ignacio",
+      "role": "Manager",
+      "message": "I appreciate you being open. Is it more related to workload, or something else?"
+    },
+    {
+      "speaker": "Employee",
+      "role": "Employee",
+      "message": "Mostly workload. The deadline for the analytics feature moved up, and I'm still handling support tickets. I've been working late most nights."
+    },
+    {
+      "speaker": "Juan Ignacio",
+      "role": "Manager",
+      "message": "That sounds like a lot. How confident do you feel about hitting the new deadline?"
+    },
+    {
+      "speaker": "Employee",
+      "role": "Employee",
+      "message": "I think I can, but I'm not very confident about the quality if things stay like this. I feel like I'm just reacting instead of doing my best work."
+    },
+    {
+      "speaker": "Juan Ignacio",
+      "role": "Manager",
+      "message": "That makes sense. Have you had enough clarity on priorities, or does it feel scattered?"
+    },
+    {
+      "speaker": "Employee",
+      "role": "Employee",
+      "message": "It feels scattered. I'm not always sure what's most important, and I don't want to drop the ball."
+    },
+    {
+      "speaker": "Juan Ignacio",
+      "role": "Manager",
+      "message": "Thanks for telling me. What do you think would help most right now?"
+    },
+    {
+      "speaker": "Employee",
+      "role": "Employee",
+      "message": "Maybe clearer priorities… or some help with support tickets for a week or two. I just need a bit of breathing room."
+    },
+    {
+      "speaker": "Juan Ignacio",
+      "role": "Manager",
+      "message": "Got it. Let's look at redistributing some of that work and align on priorities after this. I really appreciate you raising this early."
+    },
+    {
+      "speaker": "Employee",
+      "role": "Employee",
+      "message": "Thanks, that already helps."
+    }
+  ]
+}
+
