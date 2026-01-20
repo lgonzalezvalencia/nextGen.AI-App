@@ -10,8 +10,14 @@ type ModalMenuProps = {
 export default function ModalMenu({ open, onClose }: ModalMenuProps) {
   return (
     <>
-      <dialog open={open} id="modal-menu" onMouseDown={() => onClose()}>
-        <div id="modal-menu__content">
+      <dialog
+        open={open}
+        id="modal-menu"
+        onMouseDown={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
+      >
+        <div id="modal-menu__content" onMouseDown={(e) => e.stopPropagation()}>
           <div id="search">
             <input id="search__input" placeholder="Search"></input>
             <SearchIcon id="search__icon" />

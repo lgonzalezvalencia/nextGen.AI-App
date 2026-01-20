@@ -6,9 +6,11 @@ html {
 }
 
 #burger-menu {
+    position: absolute;
+    top: 70px;
+    left: 30px;
     background-color: $Gray-1;
     border: 1px solid white;
-
 }
 
 #menu-icon {
