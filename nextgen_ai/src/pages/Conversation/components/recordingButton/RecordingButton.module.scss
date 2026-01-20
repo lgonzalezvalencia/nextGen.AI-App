@@ -1,0 +1,42 @@
+@import '../../../../variables.scss';
+
+.recordingButton {
+  border-radius: 50%;
+  background-color: $White;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.paused {
+    width: 50px;
+    height: 50px;
+  }
+
+  &.recording {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.pauseIcon {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pauseBar {
+  width: 4px;
+  height: 16px;
+  background-color: $Black;
+  border-radius: 1px;
+}
+
+.recordingIndicator {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: $Red;
+}
