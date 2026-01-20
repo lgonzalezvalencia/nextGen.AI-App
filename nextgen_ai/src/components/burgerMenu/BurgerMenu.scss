@@ -1,0 +1,16 @@
+@use "./../../variables" as *;
+
+
+html {
+    background-color: black;
+}
+
+#burger-menu {
+    background-color: $Gray-1;
+    border: 1px solid white;
+
+}
+
+#menu-icon {
+    color: white;
+}
