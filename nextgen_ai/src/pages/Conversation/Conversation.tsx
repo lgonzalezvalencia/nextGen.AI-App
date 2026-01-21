@@ -5,6 +5,7 @@ import PlayButton from './components/playButton/PlayButton';
 import RecordingButton from './components/recordingButton/RecordingButton';
 import AudioRecording from './components/audioRecording/AudioRecording';
 import type { AudioRecordingRef } from './components/audioRecording/AudioRecording';
+import { transcribeAudio } from '../../services/transcription';
 
 interface Message {
   speaker: string;
@@ -55,9 +56,32 @@ const Conversation = () => {
     audioRecordingRef.current?.playRecording();
   };
 
-  const handleStop = () => {
+  const handleStop = async () => {
     // Stop recording
     audioRecordingRef.current?.stopRecording();
+    
+    // Wait a bit for the blob to be ready, then convert to WAV and transcribe
+    setTimeout(async () => {
+      try {
+        const wavBlob = await audioRecordingRef.current?.convertBlobToWav();
+        
+        if (wavBlob) {
+          console.log('🎙️ Audio converted to WAV, starting transcription...');
+          console.log('WAV blob size:', wavBlob.size, 'bytes');
+          
+          const result = await transcribeAudio(wavBlob);
+          console.log('✅ TRANSCRIPTION COMPLETE:');
+          console.log('─────────────────────────────────');
+          console.log(result.transcription);
+          console.log('─────────────────────────────────');
+          console.log('Full result object:', result);
+        } else {
+          console.log('⚠️ No audio blob available to transcribe');
+        }
+      } catch (error) {
+        console.error('❌ Transcription failed:', error);
+      }
+    }, 200);
   };
 
   return (

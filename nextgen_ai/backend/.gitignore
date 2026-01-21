@@ -1,0 +1,15 @@
+# Ignore Python virtual environment
+whisper-env/
+
+# Ignore uploaded audio files
+uploads/
+
+# Ignore node modules
+node_modules/
+
+# Ignore logs
+*.log
+npm-debug.log*
+
+# Ignore OS files
+.DS_Store

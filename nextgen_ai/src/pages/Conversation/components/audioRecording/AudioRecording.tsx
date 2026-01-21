@@ -9,6 +9,58 @@ export interface AudioRecordingRef {
   resumeRecording: () => void;
   stopRecording: () => void;
   playRecording: () => void;
+  getRecordedBlob: () => Blob | null;
+  convertBlobToWav: () => Promise<Blob | null>;
+}
+
+// Helper function to convert AudioBuffer to WAV format
+function audioBufferToWav(audioBuffer: AudioBuffer): Blob {
+  const numberOfChannels = 1; // Force mono
+  const sampleRate = audioBuffer.sampleRate;
+  const format = 1; // PCM
+  const bitDepth = 16;
+  
+  const bytesPerSample = bitDepth / 8;
+  const blockAlign = numberOfChannels * bytesPerSample;
+  
+  // Get audio data from first channel
+  const samples = audioBuffer.getChannelData(0);
+  const dataLength = samples.length * bytesPerSample;
+  const buffer = new ArrayBuffer(44 + dataLength);
+  const view = new DataView(buffer);
+  
+  // Write WAV header
+  const writeString = (offset: number, string: string) => {
+    for (let i = 0; i < string.length; i++) {
+      view.setUint8(offset + i, string.charCodeAt(i));
+    }
+  };
+  
+  writeString(0, 'RIFF');
+  view.setUint32(4, 36 + dataLength, true);
+  writeString(8, 'WAVE');
+  writeString(12, 'fmt ');
+  view.setUint32(16, 16, true); // fmt chunk size
+  view.setUint16(20, format, true); // PCM
+  view.setUint16(22, numberOfChannels, true); // Mono
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * blockAlign, true); // Byte rate
+  view.setUint16(32, blockAlign, true);
+  view.setUint16(34, bitDepth, true);
+  writeString(36, 'data');
+  view.setUint32(40, dataLength, true);
+  
+  // Write PCM samples
+  let offset = 44;
+  for (let i = 0; i < samples.length; i++) {
+    // Clamp to [-1, 1] and convert to 16-bit PCM
+    const sample = Math.max(-1, Math.min(1, samples[i]));
+    const int16Value = sample < 0 ? sample * 32768 : sample * 32767;
+    view.setInt16(offset, int16Value, true);
+    offset += 2;
+  }
+  
+  return new Blob([buffer], { type: 'audio/wav' });
 }
 
 const AudioRecording = forwardRef<AudioRecordingRef>((_props, ref) => {
@@ -43,7 +95,7 @@ const AudioRecording = forwardRef<AudioRecordingRef>((_props, ref) => {
         renderRecordedAudio: true,
         continuousWaveform: true,
         audioBitsPerSecond: 128000,
-        mimeType: 'audio/webm',
+        mimeType: 'audio/webm;codecs=opus',
       })
     );
 
@@ -126,7 +178,6 @@ const AudioRecording = forwardRef<AudioRecordingRef>((_props, ref) => {
           minPxPerSec: 100,
           autoScroll: true,
           autoCenter: true,
-          scrollParent: true,
         });
         
         wavesurferRef.current = playbackWavesurfer;
@@ -138,6 +189,34 @@ const AudioRecording = forwardRef<AudioRecordingRef>((_props, ref) => {
         });
       } else {
         console.log('Cannot play: recordedBlob or wavesurfer missing');
+      }
+    },
+    getRecordedBlob: () => {
+      return recordedBlob;
+    },
+    convertBlobToWav: async () => {
+      if (!recordedBlob) return null;
+      
+      try {
+        // Decode the audio blob to WAV format using Web Audio API
+        const audioContext = new AudioContext({ sampleRate: 16000 });
+        const arrayBuffer = await recordedBlob.arrayBuffer();
+        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+        
+        console.log('Audio buffer details:', {
+          duration: audioBuffer.duration,
+          sampleRate: audioBuffer.sampleRate,
+          numberOfChannels: audioBuffer.numberOfChannels,
+          length: audioBuffer.length
+        });
+        
+        // Convert to WAV format
+        const wavBlob = audioBufferToWav(audioBuffer);
+        console.log('WAV conversion complete, size:', wavBlob.size);
+        return wavBlob;
+      } catch (error) {
+        console.error('Error converting to WAV:', error);
+        return null;
       }
     },
   }));
