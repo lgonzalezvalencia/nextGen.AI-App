@@ -1,0 +1,19 @@
+@use "sass:color";
+@use "../../variables.scss" as *;
+
+.recordButton {
+  width: 80px;
+  height: 80px;
+  background-color: $Deloitte-green;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color.adjust($Deloitte-green, $lightness: -5%);
+  }
+}
+
+.micIcon {
+  color: white;
+}
