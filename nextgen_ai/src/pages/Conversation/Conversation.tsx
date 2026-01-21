@@ -50,6 +50,16 @@ const Conversation = () => {
     }
   };
 
+  const handlePlay = () => {
+    // Play the recorded audio
+    audioRecordingRef.current?.playRecording();
+  };
+
+  const handleStop = () => {
+    // Stop recording
+    audioRecordingRef.current?.stopRecording();
+  };
+
   return (
     <div className={styles.conversationPage}>
       <div className={styles.fadeOverlay}></div>
@@ -71,13 +81,13 @@ const Conversation = () => {
           <AudioRecording ref={audioRecordingRef} />
           <div className={styles.buttonsContainer}>
               <div className={styles.buttonWrapper}>
-                <PlayButton />
+                <PlayButton onClick={handlePlay} />
               </div>
               <div className={styles.buttonWrapper}>
                 <RecordingButton onToggle={handleRecordingToggle} />
               </div>
               <div className={styles.buttonWrapper}>
-                <StopButton />
+                <StopButton onClick={handleStop} />
               </div>
           </div>
       </div>
