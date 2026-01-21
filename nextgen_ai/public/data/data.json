@@ -1,0 +1,57 @@
+{
+  "team_member_insights": {
+    "name": "Karla Berlanga",
+    "project_information": {
+      "client": "US Cellular Corp",
+      "role": "Product Owner",
+      "team_leads": ["Austin Miller"],
+      "start_date": "2026-01-13",
+      "end_date": "2026-12-31"
+    },
+    "risk_signals": {
+      "burnout_risk": 6,
+      "delivery_risk": 7,
+      "engagement_risk": 4,
+      "risk_trajectory": "Improving",
+      "risk_drivers": [
+        "Workload",
+        "Ambiguity",
+        "Time pressure",
+        "Dependency blockers"
+      ]
+    },
+    "workload_capacity_signals": {
+      "perceived_workload_level": "High",
+      "after_hours_work_mentions": 3,
+      "parallel_responsibilities": ["Feature Delivery", "Support Workload"],
+      "support_dependency_load": [
+        "Handling support tickets",
+        "Responding to production issues",
+        "Assisting other team members"
+      ],
+      "capacity_mismatch": true
+    },
+    "delivery_project_health": {
+      "delivery_confidence": "Low",
+      "quality_risk": "High",
+      "deadline_pressure_mentions": 2,
+      "priority_clarity": "Unclear",
+      "top_blockers": ["High workload", "Support tickets", "Priority ambiguity"]
+    },
+    "actions_follow_ups": {
+      "recommended_actions": [
+        "Redistribute support tickets",
+        "Clarify short-term priorities",
+        "Follow-up check-in"
+      ],
+      "acknowledged_by_manager": [
+        "Workload redistribution",
+        "Priority clarification"
+      ],
+      "pending_actions": 2,
+      "completed_actions": 0,
+      "follow_up": "2026-02-05",
+      "impact": "TBD"
+    }
+  }
+}
