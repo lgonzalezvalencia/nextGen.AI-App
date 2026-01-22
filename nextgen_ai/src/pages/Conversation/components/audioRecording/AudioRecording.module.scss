@@ -40,4 +40,26 @@
   width: 50%;
   height: 72px;
   position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  
+  &::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  
+  // Additional scrollbar hiding for nested elements
+  & * {
+    &::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
 }

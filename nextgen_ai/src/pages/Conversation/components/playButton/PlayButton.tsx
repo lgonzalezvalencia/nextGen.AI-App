@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import styles from './PlayButton.module.scss';
 
-const PlayButton = () => {
+interface PlayButtonProps {
+  onClick?: () => void;
+}
+
+const PlayButton = ({ onClick }: PlayButtonProps) => {
   const [isPressed, setIsPressed] = useState(false);
 
   const handleMouseDown = () => {
@@ -12,12 +16,19 @@ const PlayButton = () => {
     setIsPressed(false);
   };
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <button
       className={`${styles.playButton} ${isPressed ? styles.pressed : ''}`}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
+      onClick={handleClick}
     >
       <div className={styles.playIcon}></div>
     </button>

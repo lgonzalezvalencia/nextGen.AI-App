@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+.homePage {
+    width: 100vw;
+    height: 100vh;
+    background-color: $Black;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 30px 59px;
+}
+
+.userGreeting {
+    position: absolute;
+    top: 230px;
+    left: 30px;
+    color: $White;
+    font-size: 24px;
+    font-family: 'Open Sans Light', sans-serif;
+    font-weight: 300;
+}
+
+.welcomeMessage {
+    position: absolute;
+    top: 270px;
+    left: 30px;
+    color: $White;
+    font-size: 26px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.welcomeInstruction {
+    position: absolute;
+    top: 310px;
+    left: 30px;
+    color: $White;
+    font-size: 26px;
+    font-family: 'Open Sans Light', sans-serif;
+    font-weight: 400;
+}

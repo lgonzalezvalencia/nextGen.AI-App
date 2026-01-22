@@ -1,10 +1,15 @@
 import styles from "./TeamMemberInsights.module.scss";
 import BurgerMenu from "../../components/burgerMenu/BurgerMenu";
-import RecordingButton from "../Conversation/components/recordingButton/RecordingButton";
+import StartRecordingButton from "../../components/startRecordingButton/StartRecordingButton";
 
-const TeamMemberInsights = () => {
+interface TeamMemberInsightsProps {
+  onStartRecording: () => void;
+}
+
+const TeamMemberInsights = ({ onStartRecording }: TeamMemberInsightsProps) => {
   return (
     <div className={styles.teamMemberInsightsContainer}>
+      <div className={styles.fadeOverlay}></div>
       <div className={styles.teamMemberInsightsContent}>
         <div className={styles.teamMemberInsightsHeader}>
           <BurgerMenu />
@@ -181,7 +186,7 @@ const TeamMemberInsights = () => {
         </article>
       </div>
       <div className={styles.teamMemberInsightsFooter}>
-        <RecordingButton />
+        <StartRecordingButton onClick={onStartRecording} />
       </div>
     </div>
   );

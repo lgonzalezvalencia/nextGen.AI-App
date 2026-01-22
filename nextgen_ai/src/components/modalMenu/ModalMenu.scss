@@ -2,7 +2,7 @@
 
 #modal-menu {
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     height: 100vh;
     background-color: transparent;
     font-size: 16px;
@@ -54,6 +54,7 @@
 }
 
 #clients {
+    font-family: 'Open Sans', sans-serif;
     position: absolute;
     color: white;
     left: 30px;
