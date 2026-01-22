@@ -47,7 +47,7 @@
     transform: translateX(-50%);
     background: linear-gradient(to bottom, $Black 0%, $Black 20%, transparent 100%);
     pointer-events: none;
-    z-index: 10;
+    z-index: 1;
 }
 
 .managerBubble {
