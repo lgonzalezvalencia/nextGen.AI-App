@@ -1,18 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './RecordingButton.module.scss';
 
 interface RecordingButtonProps {
-  onToggle?: (isRecording: boolean) => void;
+  onToggle?: (isPausing: boolean) => void;
+  isRecording?: boolean;
 }
 
-const RecordingButton = ({ onToggle }: RecordingButtonProps) => {
+const RecordingButton = ({ onToggle, isRecording: externalIsRecording }: RecordingButtonProps) => {
   const [isRecording, setIsRecording] = useState(false);
 
+  // Sync with external state
+  useEffect(() => {
+    if (externalIsRecording !== undefined) {
+      setIsRecording(externalIsRecording);
+    }
+  }, [externalIsRecording]);
+
   const handleClick = () => {
-    const newState = !isRecording;
-    setIsRecording(newState);
+    const willBePausing = isRecording;
+    setIsRecording(!isRecording);
     if (onToggle) {
-      onToggle(newState);
+      onToggle(willBePausing);
     }
   };
 
@@ -22,12 +30,12 @@ const RecordingButton = ({ onToggle }: RecordingButtonProps) => {
       onClick={handleClick}
     >
       {isRecording ? (
-        <div className={styles.recordingIndicator}></div>
-      ) : (
         <div className={styles.pauseIcon}>
           <div className={styles.pauseBar}></div>
           <div className={styles.pauseBar}></div>
         </div>
+      ) : (
+        <div className={styles.recordingIndicator}></div>
       )}
     </button>
   );

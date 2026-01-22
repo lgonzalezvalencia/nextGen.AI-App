@@ -12,12 +12,25 @@ interface Message {
   message: string;
 }
 
-const Conversation = () => {
+interface ConversationProps {
+  onStop: () => void;
+}
+
+const Conversation = ({ onStop }: ConversationProps) => {
   const [allMessages, setAllMessages] = useState<Message[]>([]);
   const [displayedMessages, setDisplayedMessages] = useState<Message[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isRecording, setIsRecording] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const audioRecordingRef = useRef<AudioRecordingRef>(null);
+
+  // Auto-start recording when component mounts
+  useEffect(() => {
+    const startRecording = async () => {
+      await audioRecordingRef.current?.startRecording();
+    };
+    startRecording();
+  }, []);
 
   useEffect(() => {
     fetch('/data/conversation.json')
@@ -40,13 +53,15 @@ const Conversation = () => {
     }
   };
 
-  const handleRecordingToggle = async (recording: boolean) => {
-    if (recording) {
-      // Start recording
-      await audioRecordingRef.current?.startRecording();
-    } else {
+  const handleRecordingToggle = async (isPausing: boolean) => {
+    if (isPausing) {
       // Pause recording
       audioRecordingRef.current?.pauseRecording();
+      setIsRecording(false);
+    } else {
+      // Resume recording
+      audioRecordingRef.current?.resumeRecording();
+      setIsRecording(true);
     }
   };
 
@@ -58,6 +73,8 @@ const Conversation = () => {
   const handleStop = () => {
     // Stop recording
     audioRecordingRef.current?.stopRecording();
+    // Navigate to insights
+    onStop();
   };
 
   return (
@@ -84,7 +101,7 @@ const Conversation = () => {
                 <PlayButton onClick={handlePlay} />
               </div>
               <div className={styles.buttonWrapper}>
-                <RecordingButton onToggle={handleRecordingToggle} />
+                <RecordingButton onToggle={handleRecordingToggle} isRecording={isRecording} />
               </div>
               <div className={styles.buttonWrapper}>
                 <StopButton onClick={handleStop} />

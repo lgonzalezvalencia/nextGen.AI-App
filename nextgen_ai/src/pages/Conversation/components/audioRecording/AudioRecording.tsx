@@ -91,8 +91,10 @@ const AudioRecording = forwardRef<AudioRecordingRef>((_props, ref) => {
       }
     },
     resumeRecording: () => {
-      if (recordPluginRef.current) {
+      if (recordPluginRef.current && isRecordingStarted && isPaused) {
+        console.log('Resuming recording');
         recordPluginRef.current.resumeRecording();
+        setIsPaused(false);
       }
     },
     stopRecording: () => {
@@ -126,7 +128,6 @@ const AudioRecording = forwardRef<AudioRecordingRef>((_props, ref) => {
           minPxPerSec: 100,
           autoScroll: true,
           autoCenter: true,
-          scrollParent: true,
         });
         
         wavesurferRef.current = playbackWavesurfer;
