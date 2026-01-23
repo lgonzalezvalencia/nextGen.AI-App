@@ -1,15 +1,28 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
+
+.burgerMenuWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
 
 .fadeOverlay {
-    width: 380px;
-    height: 68px;
-    position: fixed;
-    bottom: 846px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(to bottom, $Black 0%, $Black 20%, transparent 100%);
-    pointer-events: none;
-    z-index: 1;
+  width: 380px;
+  height: 68px;
+  position: fixed;
+  bottom: 846px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    $Black 0%,
+    $Black 20%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 .teamMemberInsightsContainer {
@@ -23,6 +36,7 @@
 
   .teamMemberInsightsContent {
     height: 762px;
+    padding-top: 55px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -31,7 +45,7 @@
       color: $White;
 
       h1 {
-        font-family: 'Open Sans', sans-serif !important;
+        font-family: "Open Sans", sans-serif !important;
         font-size: 26;
         color: $Deloitte-green;
       }
@@ -68,8 +82,8 @@ $gap: 18px;
 $section-gap: 22px;
 
 // Fonts (feel free to replace with your project's font stack)
-$serif: 'Open Sans', sans-serif;
-$sans:'Open Sans', sans-serif;
+$serif: "Open Sans", sans-serif;
+$sans: "Open Sans", sans-serif;
 
 .card {
   background: $panel-bg;

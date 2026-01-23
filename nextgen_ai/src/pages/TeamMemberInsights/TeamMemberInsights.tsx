@@ -9,11 +9,11 @@ interface TeamMemberInsightsProps {
 const TeamMemberInsights = ({ onStartRecording }: TeamMemberInsightsProps) => {
   return (
     <div className={styles.teamMemberInsightsContainer}>
+      <div className={styles.burgerMenuWrapper}>
+        <BurgerMenu />
+      </div>
       <div className={styles.fadeOverlay}></div>
       <div className={styles.teamMemberInsightsContent}>
-        <div className={styles.teamMemberInsightsHeader}>
-          <BurgerMenu />
-        </div>
         <article className={styles.card}>
           <header className={styles.header}>
             <h1 className={styles.title}>Team Member Insights</h1>
