@@ -1,0 +1,153 @@
+@use "../../variables.scss" as *;
+
+.container {
+  position: relative;
+  width: $main_width;
+  height: $main_height;
+  background-color: $Black;
+}
+
+.title {
+  position: absolute;
+  width: 203px;
+  height: 54px;
+  top: 216px;
+  left: 119px;
+  margin: 0;
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  color: $Deloitte-green;
+}
+
+.emailInput {
+  position: absolute;
+  width: 380px;
+  height: 50px;
+  top: 363px;
+  left: 30px;
+
+  background-color: $Gray-2;
+  color: $Gray-5;
+  border: none;
+  border-radius: 3px;
+  padding: 0 15px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  outline: none;
+
+  &::placeholder {
+    color: $Gray-5;
+  }
+}
+
+.passwordInput {
+  position: absolute;
+  width: 380px;
+  height: 50px;
+  top: 433px;
+  left: 30px;
+
+  background-color: $Gray-2;
+  color: $Gray-5;
+  border: none;
+  border-radius: 3px;
+  padding: 0 15px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  outline: none;
+
+  &::placeholder {
+    color: $Gray-5;
+  }
+}
+
+.forgotPassword {
+  position: absolute;
+  width: 120px;
+  height: 19px;
+  top: 503px;
+  left: 290px;
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  top: 520px;
+  left: 30px;
+  margin: 0;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  color: #ff4444;
+}
+
+.loginButton {
+  position: absolute;
+  width: 380px;
+  height: 50px;
+  top: 543px;
+  left: 30px;
+
+  background-color: $Deloitte-green;
+  color: $White;
+  border: none;
+  border-radius: 3px;
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: darken($Deloitte-green, 5%);
+  }
+}
+
+.footerLine {
+  position: absolute;
+  width: 440px;
+  height: 0px;
+  top: 856px;
+  left: 2px;
+  border-top: 1px solid #ffffff;
+}
+
+.footerText {
+  position: absolute;
+  top: 870px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  color: #ffffff;
+}
