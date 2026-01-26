@@ -14,7 +14,7 @@ const HomePage = ({ onStartRecording }: HomeProps) => {
       </div>
       <h2 className={styles["greeting"]}>Hi Juan Ignacio</h2>
       <div className={styles["readyText"]}>
-        <strong>Ready for your next 1:1?</strong>
+        <span>Ready for your next 1:1?</span>
         <br />
         <span className={styles["supportText"]}>
           Start a conversation to support your team.

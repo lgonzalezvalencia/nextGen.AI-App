@@ -1,28 +1,23 @@
 @import "../../variables.scss";
 
+.fadeOverlay {
+  width: 380px;
+  height: 70px;
+  position: fixed;
+  bottom: 848px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, $Black 0%, $Black 20%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .burgerMenuWrapper {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 10;
   pointer-events: none;
-}
-
-.fadeOverlay {
-  width: 380px;
-  height: 68px;
-  position: fixed;
-  bottom: 846px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    $Black 0%,
-    $Black 20%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 1;
 }
 
 .teamMemberInsightsContainer {
@@ -35,17 +30,15 @@
   gap: 10px;
 
   .teamMemberInsightsContent {
-    height: 762px;
-    padding-top: 55px;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    min-height: 0;
 
     .teamMemberInsightsText {
       color: $White;
 
       h1 {
-        font-family: "Open Sans", sans-serif !important;
         font-size: 26;
         color: $Deloitte-green;
       }
@@ -55,7 +48,6 @@
       }
       .candidateName {
         font-style: italic;
-        font-weight: 200;
       }
       .predError {
         color: $Red;
@@ -70,255 +62,94 @@
   }
 }
 
-// Variables
-$bg: #000; // page background
-$panel-bg: transparent; // keep transparent if you have phone mock; change to #070707 for subtle panel
-$text: #e8e8e8;
-$muted: #bdbdbd;
-$accent: #8fd51b; // green accent from your mock
-$danger: #ff6b4a;
-$max-width: 420px;
-$gap: 18px;
-$section-gap: 22px;
 
-// Fonts (feel free to replace with your project's font stack)
-$serif: "Open Sans", sans-serif;
-$sans: "Open Sans", sans-serif;
+$max-width: 420px;
+$section-gap: 30px;
 
 .card {
-  background: $panel-bg;
-  color: $text;
-  font-family: $sans;
-  padding: 28px 22px;
-  box-sizing: border-box;
   width: 100%;
   max-width: $max-width;
   margin: 0 auto;
-  line-height: 1.45;
-  overflow: scroll;
+  overflow-y: auto;
   scrollbar-width: none;
-
-  // center inside a phone mock — optional wrapper if you have one
-  &.phoneWrap {
-    padding-top: 56px; // lift content below status bar in mock
-    padding-bottom: 56px;
-  }
+  flex: 1;
+  min-height: 0;
 }
 
-/* Header */
 .header {
-  margin-bottom: $section-gap;
+  margin-bottom: 20px;
   display: block;
 
   .title {
-    color: $accent;
-    font-family: $serif;
-    font-weight: 700;
-    font-size: 1.6rem;
-    line-height: 1.05;
-    margin: 0 0 6px 0;
+    color: $Deloitte-green;
+    font-size: 24px;
+    font-family: 'Open Sans Light', sans-serif;
+    font-weight: 300;
+    margin: 0 0 10px 0;
   }
 
   .candidateName {
-    display: block;
-    font-family: $serif;
+    font-family: 'Open Sans Light', sans-serif;
     font-style: italic;
-    color: lighten($muted, 3%);
-    font-weight: 400;
+    font-size: 20px;
+    color: $White;
     margin: 0 0 14px 0;
-    font-size: 1rem;
   }
 }
 
-/* Generic section styling */
 .section {
   margin-bottom: $section-gap;
+  font-family: 'Open Sans', sans-serif;
+  color: $White;
 
   h3 {
     margin: 0 0 10px 0;
-    color: $text;
-    font-size: 1rem;
-    font-weight: 700;
-    font-family: $serif;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
   }
 
-  h4 {
-    margin: 12px 0 8px 0;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: $text;
-  }
-
-  // compact lists used for Project Information, Delivery, etc.
   ul.infoList,
+  ul.riskSignals,
   ul.actionsList {
     list-style: none;
     padding: 0;
     margin: 0;
+    color: $White;
 
     li {
       margin: 8px 0;
-      color: $muted;
-      font-size: 0.95rem;
-
-      strong {
-        color: $text;
-        font-weight: 700;
-        display: inline-block;
-        margin-right: 6px;
-        min-width: 150px; // aligns labels; adjust to taste
-        font-size: 0.95rem;
-      }
+      font-size: 16px; 
     }
   }
 
-  // default lists that should display bullets
-  ul,
-  ol {
-    margin: 6px 0 0 18px;
-    color: $muted;
-    font-size: 0.95rem;
-    li {
-      margin: 6px 0;
-    }
-  }
-}
-
-/* Risk signals: horizontal compact grid */
-.riskSignals {
-  margin-top: 8px;
-
-  .riskGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 8px 0 0 0;
-
-    .riskItem {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      min-width: 140px;
-
-      .riskLabel {
-        color: $muted;
-        font-size: 0.9rem;
-      }
-
-      .riskValue {
-        color: $text;
-        font-weight: 700;
-        background: rgba(255, 255, 255, 0.02);
-        padding: 4px 8px;
-        border-radius: 12px;
-        font-size: 0.95rem;
-        display: inline-block;
-        min-width: 28px;
-        text-align: center;
-      }
-
-      &.improving .riskValue {
-        color: lighten($accent, 4%);
-      }
-      &.declining .riskValue {
-        color: $danger;
-      }
-    }
+  .value {
+    font-family: 'Open Sans Light', sans-serif;
   }
 
-  // Risk drivers list if used next to grid
-  .driversList {
-    margin-top: 10px;
+  .driversList,
+  .blockersList {
     list-style: disc;
-    padding-left: 20px;
-    color: $muted;
-    font-size: 0.95rem;
-  }
-}
-
-/* Workload & Capacity */
-.workload {
-  .subList {
-    list-style: none;
-    padding: 0;
-    margin: 6px 0;
-
-    li {
-      margin: 6px 0;
-    }
+    padding-left: 60px;
+    font-family: 'Open Sans Light', sans-serif;
   }
 
   .parallelList,
-  .supportList {
-    margin-left: 18px;
-    color: $muted;
-  }
-}
-
-/* Delivery & Health */
-.delivery {
-  ul {
-    li strong {
-      min-width: 150px;
-    } // match project info label width
-  }
-
-  .blockers {
-    margin-top: 8px;
-    ol {
-      margin-left: 18px;
-      color: $muted;
-    }
-  }
-}
-
-/* Actions / follow ups */
-.actions {
-  .recommended,
-  .acknowledged {
-    margin: 6px 0;
+  .supportList,
+  .recommendedList,
+  .acknowledgedList {
     list-style: disc;
-    padding-left: 18px;
-    color: $muted;
-  }
+    padding-left: 60px;
+    font-family: 'Open Sans Light', sans-serif;
 
-  .summary {
-    margin-top: 10px;
-    ul {
-      li {
-        strong {
-          min-width: 140px;
-          display: inline-block;
-        }
-        color: $muted;
-      }
+    li:last-child {
+      margin-bottom: 8px;
     }
   }
+
 }
 
-/* Prediction error / important callout */
 .predError {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: rgba(255, 107, 74, 0.05);
-  color: $danger;
-  font-weight: 700;
-  font-size: 0.9rem;
-  box-shadow: none;
-}
-
-/* Utility: small microphone button example used in screenshot */
-.micButton {
-  width: 64px;
-  height: 64px;
-  background: $accent;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-  color: #fff;
-  margin: 18px auto 0;
+  color: $Red;
+  font-style: italic;
 }

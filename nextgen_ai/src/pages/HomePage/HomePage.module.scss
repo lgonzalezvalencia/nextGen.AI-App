@@ -4,7 +4,7 @@
   width: 100vw;
   height: 100vh;
   position: relative;
-  color: white;
+  color: white;color: $White;
   overflow: hidden;
 }
 
@@ -20,25 +20,14 @@
   position: absolute;
   top: 280px;
   left: 30px;
-  width: 159px;
-  height: 33px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+  font-family: "Open Sans Light", sans-serif;
   font-size: 24px;
-  line-height: 24px;
-  letter-spacing: 0%;
-  color: #ffffff;
-  margin: 0;
-  white-space: nowrap;
 }
 
 .readyText {
   position: absolute;
   top: 333px;
   left: 30px;
-  width: 340px;
-  height: 105px;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -50,9 +39,7 @@
 }
 
 .supportText {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+  font-family: "Open Sans Light", sans-serif;
   font-size: 26px;
   line-height: 100%;
   letter-spacing: 0%;

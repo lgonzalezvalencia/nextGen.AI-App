@@ -26,7 +26,7 @@ const RecordingButton = ({ onToggle, isRecording: externalIsRecording }: Recordi
 
   return (
     <button
-      className={`${styles.recordingButton} ${isRecording ? styles.recording : styles.paused}`}
+      className={`${styles.recordingButton} ${isRecording ? styles.paused : styles.recording}`}
       onClick={handleClick}
     >
       {isRecording ? (

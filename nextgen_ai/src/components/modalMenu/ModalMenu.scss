@@ -4,7 +4,9 @@
   width: 100%;
   height: 100vh;
   background-color: transparent;
+  font-family: "Open Sans Light", sans-serif;
   font-size: 16px;
+  color: $White;
   position: fixed;
   top: 0;
   left: 0;
@@ -33,37 +35,33 @@
 #search__input {
   height: 40px;
   width: 280px;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: $Gray-4;
   border: none;
   padding-left: 40px;
   font-size: 18px;
-  color: white;
 }
 
 #search__input::placeholder {
-  color: white;
+    font-family: "Open Sans Light", sans-serif;
+    color: white;
 }
 
 #search__icon {
   position: absolute;
-  color: white;
   left: 9px;
   top: 10px;
 }
 
 .entries {
   position: absolute;
-  color: white;
   left: 30px;
-  top: 130px;
+  top: 140px;
   font-size: 18px;
 }
 
 #clients {
-  font-family: "Open Sans", sans-serif;
   position: absolute;
-  color: white;
   left: 30px;
   top: 175px;
 }
@@ -74,9 +72,11 @@
 
 .client__name {
   font-size: 18px;
+  font-family: "Open Sans Light", sans-serif;
 }
 
 .client__last-update {
   font-size: 14px;
+  font-family: "Open Sans Light", sans-serif;
   opacity: 75%;
 }
